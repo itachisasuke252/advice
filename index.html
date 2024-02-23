@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yo</title>
+    <link rel="icon" href="favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Manrope", sans-serif;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        background-color: hsl(218, 23%, 16%);
+      }
+      .card {
+        height: fit-content;
+        width: 400px;
+        background-color: hsl(217, 19%, 24%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 30px 20px;
+        text-align: center;
+        position: relative;
+      }
+      p {
+        color: hsl(193, 38%, 86%);
+        margin: 20px 0 15px 0;
+        font-size: 28px;
+      }
+      h4 {
+        color: hsl(150, 100%, 66%);
+      }
+      .image {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 50%;
+        bottom: -25px;
+        transform: translateX(-50%);
+        background-color: hsl(150, 100%, 66%);
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .bar {
+        width: 100%;
+      }
+      .bar img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h4>Advance #<span>117</span></h4>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. At nam
+          inventore iure autem =
+        </p>
+        <div class="bar">
+          <img src="pattern-divider-desktop.svg" alt="" />
+        </div>
+        <div class="image"><img src="icon-dice.svg" alt="" /></div>
+      </div>
+    </div>
+    <script>
+      const some = async () => {
+        const response = await fetch("https://api.adviceslip.com/advice");
+        const data = await response.json();
+        console.log(data.slip.advice);
+        document.querySelector("p").textContent = data.slip.advice;
+        document.querySelector("h4 span").textContent = data.slip.id;
+      };
+      document.querySelector(".image").addEventListener("click", some);
+    </script>
+  </body>
+</html>
